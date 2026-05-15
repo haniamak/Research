@@ -19,3 +19,17 @@ What happens when communication links fail? Is there any “weak” point? Can w
 5) Do sensors need maintenance or calibration from time to time? What is the most efficient way? Do we need to determine whether selected network instances contain Euler cycles or Hamiltonian cycles to visit each sensor exactly once? How can this information be applied? TSP?
 
 6) Do sensors communicate with each other? When communicating, can Dijkstra’s algorithm help somehow? Should we add new links?
+
+DIFFRENT MEASURMENT METHODS:
+
+| Rank | Method                | Scientific / regulatory quality   | Main strengths                                                 | Main limitations                              |
+| ---- | --------------------- | --------------------------------- | -------------------------------------------------------------- | --------------------------------------------- |
+| 1    | **TEOM-FDMS**         | Excellent                         | Near-reference continuous monitoring; corrects volatile losses | Expensive, complex                            |
+| 2    | **BETA / BAM**        | Excellent                         | Widely accepted regulatory equivalent method                   | Filter artifacts possible                     |
+| 3    | **TEOM**              | Very high                         | Stable continuous mass measurements                            | Heated inlet may lose volatile aerosols       |
+| 4    | **nephelometry+beta** | High                              | Combines optical speed with beta calibration                   | Calibration-dependent                         |
+| 5    | **SMPS**              | Very advanced research instrument | Extremely detailed particle-size characterization              | Not designed primarily for regulatory PM mass |
+| 6    | **nephelometry**      | Moderate–high                     | Good real-time aerosol scattering measurements                 | PM mass inferred indirectly                   |
+| 7    | **light-scat**        | Moderate                          | Cheap, fast, dense networks possible                           | Sensitive to humidity/composition             |
+| 8    | **OPC-CMC**           | Moderate–low                      | Useful low-cost monitoring                                     | Lower accuracy; calibration drift             |
+| 9    | **other**             | Unknown                           | Depends on instrument                                          | Cannot evaluate                               |
