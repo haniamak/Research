@@ -6,7 +6,7 @@ import geodatasets
 import matplotlib.pyplot as plt
 
 # Directory containing CSV files
-maps_dir = Path(__file__).parent.parent / "data" / "maps"
+maps_dir = Path(__file__).parent.parent.parent / "data" / "maps"
 print(f"Searching: {maps_dir.as_posix()}")
 
 sensor_data = []
