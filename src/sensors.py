@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pandas as pd
 
-dataGermany = Path(__file__).with_name("data") / "GermanyMap.csv"
-dataPoland = Path(__file__).with_name("data") / "PolandMap.csv"
+dataGermany = Path(__file__).parent.parent / "data" / "maps" / "GermanyMap.csv"
+dataPoland = Path(__file__).parent.parent / "data" / "maps" / "PolandMap.csv"
 
 
 def count_occurance_station_areas(csv_path) -> pd.DataFrame:
