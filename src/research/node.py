@@ -1,8 +1,8 @@
 class Node:
     def __init__(self, name, longitude, latitude, country):
         self.name = name
-        self.longitude = longitude
-        self.latitude = latitude
+        self.longitude: float = longitude
+        self.latitude: float = latitude
         self.country = country
 
     def __eq__(self, other):
