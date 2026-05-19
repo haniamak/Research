@@ -75,8 +75,8 @@ def plot_graph(G: nx.Graph):
     world = gpd.read_file(geodatasets.get_path("naturalearth.land"))
 
     world.boundary.plot(ax=ax, linewidth=1, color="black")
-    ax.set_xlim(-25, 45)
-    ax.set_ylim(34, 72)
+    ax.set_xlim(5, 25)
+    ax.set_ylim(46, 56)
 
     plt.xlabel("Longitude")
     plt.ylabel("Latitude")
