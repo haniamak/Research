@@ -20,6 +20,10 @@ What happens when communication links fail? Is there any “weak” point? Can w
 
 6) Do sensors communicate with each other? When communicating, can Dijkstra’s algorithm help somehow? Should we add new links?
 
+
+SCHEMAT PREZENTACJI: 
+
+1. Diffrent measurment methds in Poland and Germany
 DIFFRENT MEASURMENT METHODS:
 
 | Rank | Method                | Scientific / regulatory quality   | Main strengths                                                 | Main limitations                              |
@@ -33,3 +37,8 @@ DIFFRENT MEASURMENT METHODS:
 | 7    | **light-scat**        | Moderate                          | Cheap, fast, dense networks possible                           | Sensitive to humidity/composition             |
 | 8    | **OPC-CMC**           | Moderate–low                      | Useful low-cost monitoring                                     | Lower accuracy; calibration drift             |
 | 9    | **other**             | Unknown                           | Depends on instrument                                          | Cannot evaluate                               |
+
+2. dwie metody na grafy -> do 40 km i knn
+3. porownanie niemcy i polska sieci sensorow - gęstość, rozmieszczenie, itp.
+4. bridge and articulation points
+5. temat badawczy - polaczenie sensorow z niemiec i polski i stworzenie kanalu informacji
