@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+from research.utils import graph_from_csv, plot_graph
 import folium
 from geopy.distance import geodesic
 import networkx as nx
@@ -51,33 +52,42 @@ for _, row in stations.iterrows():
 # m.save("map.html")
 
 
-G = nx.Graph()
-for _, row in stations.iterrows():
-    G.add_node(
-        row["Air Quality Station EoI Code"],
-        name=row["Air Quality Station Name"],
-        pos=(row["Latitude"], row["Longitude"]),
-        country=row["Country"],
-    )
+G = graph_from_csv(
+    Path(__file__).parent.parent.parent / "data" / "maps" / "PolandMap.csv"
+)
+germany_g = graph_from_csv(
+    Path(__file__).parent.parent.parent / "data" / "maps" / "GermanyMap.csv"
+)
+G.add_nodes_from(germany_g)
+# G = nx.Graph()
+# for _, row in stations.iterrows():
+#     G.add_node(
+#         row["Air Quality Station EoI Code"],
+#         name=row["Air Quality Station Name"],
+#         pos=(row["Latitude"], row["Longitude"]),
+#         country=row["Country"],
+#     )
 
-MAX_DISTANCE = 80  # km
+MAX_DISTANCE = 60  # km
 
-for i, row1 in stations.iterrows():
-    for j, row2 in stations.iterrows():
+print("Calculation graph")
+for i, node1 in enumerate(G.nodes):
+    for j, node2 in enumerate(G.nodes):
         if i >= j:
             continue
 
-        coord1 = (row1["Latitude"], row1["Longitude"])
-        coord2 = (row2["Latitude"], row2["Longitude"])
+        coord1 = (node1.latitude, node1.longitude)
+        coord2 = (node2.latitude, node2.longitude)
 
         dist = geodesic(coord1, coord2).km
 
         if dist <= MAX_DISTANCE:
             G.add_edge(
-                row1["Air Quality Station EoI Code"],
-                row2["Air Quality Station EoI Code"],
+                node1,
+                node2,
                 weight=dist,
             )
+print("Graph completed")
 
 print("Vertices:", G.number_of_nodes())
 print("Edges:", G.number_of_edges())
@@ -92,13 +102,13 @@ print("BFS Nodes:", len(bfs_nodes))
 dfs_nodes = list(nx.dfs_tree(G, source=list(G.nodes)[0]))
 
 print("DFS Nodes:", len(dfs_nodes))
-print(dfs_nodes)
+# print(dfs_nodes)
 
-source = list(G.nodes)[0]
-target = list(G.nodes)[10]
+# source = list(G.nodes)[0]
+# target = list(G.nodes)[10]
 
-path = nx.dijkstra_path(G, source, target, weight="weight")
-print("Shortest path from", source, "to", target, ":", path)
+# path = nx.dijkstra_path(G, source, target, weight="weight")
+# print("Shortest path from", source, "to", target, ":", path)
 
 
 articulation_points = list(nx.articulation_points(G))
@@ -108,5 +118,7 @@ print("Articulation Points:", len(articulation_points))
 
 bridges = list(nx.bridges(G))
 
-print("Bridges:", len(bridges))
-print(bridges)
+# print("Bridges:", len(bridges))
+# print(bridges)
+
+plot_graph(G)
